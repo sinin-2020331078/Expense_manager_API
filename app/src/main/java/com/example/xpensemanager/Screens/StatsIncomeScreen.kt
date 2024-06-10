@@ -13,7 +13,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
-//import androidx.activity.enableEdgeToEdge
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -42,6 +42,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import com.example.xpensemanager.DestinationScreen
 import com.example.xpensemanager.navigateTo
 import com.example.xpensemanager.submit
@@ -51,8 +53,8 @@ import com.example.xpensemanager.ui.theme.AbarTryTheme
 import com.example.xpensemanager.verify
 import com.example.xpensemanager.verifyStatus
 
-/*
-class MainActivity : ComponentActivity() {
+
+/*class StatsIncomeScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
@@ -66,9 +68,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun StatsIncomeScreen(navController: NavController, vm: XMViewModel) {
+    //enableEdgeToEdge()
+
     var value by rememberSaveable {
         mutableStateOf("");
     }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -97,7 +102,7 @@ fun StatsIncomeScreen(navController: NavController, vm: XMViewModel) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(onClick = {
-                submit()
+                submit(value)
             }, modifier = Modifier.width(130.dp)
             ) {
                 Text(text = "Request")
@@ -116,14 +121,14 @@ fun StatsIncomeScreen(navController: NavController, vm: XMViewModel) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(onClick = {
-                subscriptionOn()
+                subscriptionOn(navController,value)
             }, modifier = Modifier.width(130.dp)
             ) {
                 Text(text = "Subscribe")
             }
 
             Button(onClick = {
-                subscriptionOff()
+                subscriptionOff(value)
             },modifier = Modifier.width(130.dp)) {
                 Text(text = "Unsubscribe")
             }
@@ -135,18 +140,18 @@ fun StatsIncomeScreen(navController: NavController, vm: XMViewModel) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(onClick = {
-                verifyStatus()
+                verifyStatus(navController,value)
             }, modifier = Modifier.width(130.dp)
             ) {
                 Text(text = "Status")
             }
         }
-        Text(text = "Expense",
+        Text(text = "SingUp without subscription",
             color = Color(0XFFFC0000),
             modifier = Modifier
                 .padding(6.dp)
                 .clickable {
-                    navigateTo(navController, DestinationScreen.StatsExpense.route)
+                    navigateTo(navController, DestinationScreen.SignUp.route)
                 }
         )
     }

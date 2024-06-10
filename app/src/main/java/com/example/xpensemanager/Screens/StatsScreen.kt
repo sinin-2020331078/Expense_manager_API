@@ -257,7 +257,7 @@ fun TotalIncomeExpenseRo(navController : NavController, totalIncome: Double, tot
                     modifier = Modifier
                         .padding(6.dp)
                         .clickable {
-                            navigateTo(navController, DestinationScreen.StatsIncome.route)
+                            navigateTo(navController, DestinationScreen.StatsExpense.route)
                         }
                 )
                 Text(

@@ -95,7 +95,7 @@ fun ProfileScreen(navController: NavController, vm: XMViewModel) {
             Button(
                 onClick = {
                     vm.logOut(context)
-                    navController.navigate(DestinationScreen.LogIn.route)
+                    navController.navigate(DestinationScreen.StatsIncome.route)
                 },
                 modifier = Modifier
                     .padding(8.dp)

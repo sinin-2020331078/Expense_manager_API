@@ -57,6 +57,8 @@ sealed class DestinationScreen(var route: String) {
     object Budget : DestinationScreen("budget")
     object Profile : DestinationScreen("profile")
     object BudgetSetting : DestinationScreen("budgetSetting")
+    object Subscription : DestinationScreen("Subscription")
+    object Verify : DestinationScreen("Verify")
 
 }
 
@@ -87,7 +89,7 @@ class MainActivity : ComponentActivity() {
 
         NavHost(
             navController = navController,
-            startDestination = DestinationScreen.SignUp.route
+            startDestination = DestinationScreen.StatsIncome.route
 
         ) {
             composable(DestinationScreen.SignUp.route) {
@@ -132,6 +134,7 @@ class MainActivity : ComponentActivity() {
             composable(DestinationScreen.AddTransaction.route) {
                 AddTransactionsScreen(navController, vm)
             }
+
 
         }
 
